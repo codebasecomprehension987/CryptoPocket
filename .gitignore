@@ -1,0 +1,53 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+*.pyd
+dist/
+build/
+*.egg-info/
+.eggs/
+.venv/
+venv/
+.env
+
+# Rust / Maturin
+target/
+Cargo.lock
+*.rlib
+
+# PyTorch / ML
+*.pt
+*.ckpt
+*.bin
+*.safetensors
+wandb/
+lightning_logs/
+outputs/
+
+# Data (don't commit raw PDB files)
+data/raw/*.pdb
+data/raw/*.cif
+data/raw/*.fasta
+data/processed/*.jsonl
+
+# Triton cache
+~/.triton/
+
+# Testing
+.pytest_cache/
+.coverage
+htmlcov/
+*.log
+
+# IDEs
+.vscode/
+.idea/
+*.swp
+
+# macOS
+.DS_Store
+
+# Benchmarks output
+results/
