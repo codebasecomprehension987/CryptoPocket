@@ -1,0 +1,26 @@
+[package]
+name = "cryptopocket_arena"
+version = "0.1.0"
+edition = "2021"
+description = "GC-free frame tensor arena for CryptoPocket diffusion loop"
+license = "MIT"
+
+[lib]
+name = "cryptopocket_arena"
+crate-type = ["cdylib"]
+
+[dependencies]
+pyo3 = { version = "0.21", features = ["extension-module", "abi3-py310"] }
+ndarray = { version = "0.15", features = ["rayon"] }
+numpy = "0.21"
+rayon = "1.10"
+parking_lot = "0.12"
+
+[features]
+default = []
+extension-module = ["pyo3/extension-module"]
+
+[profile.release]
+opt-level = 3
+lto = true
+codegen-units = 1
