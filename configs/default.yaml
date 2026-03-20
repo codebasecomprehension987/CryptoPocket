@@ -1,0 +1,42 @@
+# CryptoPocket default configuration
+# Override any value with: python -m cryptopocket predict encoder.n_layers=12
+
+device: "cuda"   # "cpu" for no-GPU environments
+
+encoder:
+  embed_dim: 256
+  pair_dim: 64
+  n_layers: 8
+  n_heads: 8
+  dropout: 0.1
+
+diffusion:
+  n_steps: 200
+  hidden_dim: 256
+  sampler: "ddim"      # only ddim supported currently
+  use_arena: true      # Rust arena for GC-free frame management
+
+probe:
+  logit_n_heads: 4
+  hidden_dim: 128
+  use_cffi: true       # attempt OpenFold3 hook; falls back gracefully
+
+ranker:
+  score_threshold: 0.3
+  cluster_cutoff: 8.0  # Å
+  min_cluster_size: 4
+  cryptic_threshold: 0.65
+
+training:
+  lr: 1.0e-4
+  weight_decay: 1.0e-5
+  batch_size: 8
+  max_steps: 200000
+  warmup_steps: 4000
+  grad_clip: 1.0
+  mixed_precision: true
+
+data:
+  train_split: "data/processed/train.jsonl"
+  val_split: "data/processed/val.jsonl"
+  max_seq_len: 1024
